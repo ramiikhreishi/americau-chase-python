@@ -1,0 +1,34 @@
+name: Pull Request and Restart
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pull_request:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: 'Automatic pull request'
+          title: 'Automatic pull request'
+          branch: 'migration-pull-request'
+          base: 'main'
+          token: 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
+
+  deploy:
+    needs: pull_request
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run bm2 restart
+        run: bm2 restart
