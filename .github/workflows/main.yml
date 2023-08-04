@@ -1,0 +1,51 @@
+name: Pull Request and Restart
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pull_request:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: 'Automatic pull request'
+          title: 'Automatic pull request'
+          branch: 'migration-pull-request'
+          base: 'main'
+          token: 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
+
+  deploy:
+    needs: pull_request
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run bm2 restart
+        run: kill -9 all &
+          python3 API_Scripts/Activities_API_Port_1010.py &
+          python3 API_Scripts/School_List_API_Port_1020.py &
+          python3 API_Scripts/School_User_API_Port_1030.py &
+          python3 API_Scripts/Skill_Data_API_Port_1040.py &
+          python3 API_Scripts/Total_Gametime_API_Port_1050.py &
+          python3 API_Scripts/Unique_User_Login_API_Port_1060.py &
+          python3 DashboardTables/LoginData.py &
+          python3 DashboardTables/MissionTable.py &
+          python3 DashboardTables/PlaytimeData.py &
+          python3 DashboardTables/SkillPointsData.py &
+          python3 TableCreationScripts/HL3_Activities_Upon_Login.py &
+          python3 TableCreationScripts/HL3_Complete_User_List.py &
+          python3 TableCreationScripts/HL3_Time_In_Game.py &
+          python3 TableCreationScripts/HL3_Mission_Table.py &
+          python3 TableCreationScripts/HL3_Unique_User_Logins.py
+
+        
