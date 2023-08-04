@@ -20,13 +20,13 @@ jobs:
           title: 'Automatic pull request'
           branch: 'migration-pull-request'
           base: 'main'
-          token: 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
+          token: "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"
           draft: false
           body: 'This is the description of the pull request.'
           labels: 'auto-generated, pull-request'
 
   deploy:
-    needs: create_pull_request  # The 'deploy' job depends on the successful completion of 'create_pull_request' job.
+    needs: create_pull_request
     runs-on: self-hosted
 
     steps:
