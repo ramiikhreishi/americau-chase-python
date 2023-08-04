@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  pull_request:
+  create_pull_request:
     runs-on: self-hosted
 
     steps:
@@ -21,9 +21,13 @@ jobs:
           branch: 'migration-pull-request'
           base: 'main'
           token: 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
+          repo: 'americau-chase-python'
+          draft: false
+          body: 'This is the description of the pull request.'
+          labels: 'auto-generated, pull-request'
 
   deploy:
-    needs: pull_request
+    needs: create_pull_request
     runs-on: self-hosted
 
     steps:
