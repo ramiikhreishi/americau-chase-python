@@ -20,8 +20,7 @@ jobs:
           title: 'Automatic pull request'
           branch: 'migration-pull-request'
           base: 'main'
-          token: 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
-          repo: 'americau-chase-python'
+          token: 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
           draft: false
           body: 'This is the description of the pull request.'
           labels: 'auto-generated, pull-request'
