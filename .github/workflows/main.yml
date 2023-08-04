@@ -20,14 +20,14 @@ jobs:
           title: 'Automatic pull request'
           branch: 'migration-pull-request'
           base: 'main'
-          token: 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
+          token: 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
           repo: 'americau-chase-python'
           draft: false
           body: 'This is the description of the pull request.'
           labels: 'auto-generated, pull-request'
 
   deploy:
-    needs: create_pull_request
+    needs: create_pull_request  # The 'deploy' job depends on the successful completion of 'create_pull_request' job.
     runs-on: self-hosted
 
     steps:
@@ -54,4 +54,3 @@ jobs:
           nohup python3 TableCreationScripts/HL3_Time_In_Game.py &
           nohup python3 TableCreationScripts/HL3_Mission_Table.py &
           nohup python3 TableCreationScripts/HL3_Unique_User_Logins.py &
-        
