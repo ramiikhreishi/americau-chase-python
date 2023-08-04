@@ -20,7 +20,7 @@ def MySQL_User_Table():
 
     query1 = "SELECT * FROM HLGD.HL3_Activities_Upon_Login;"
 
-    Activities_Upon_Login = pd.read_sql(query1, mydb_HLGD)
+    Activities_Upon_Login = pd.read_sql(query1, mydb_HLGD)  
 
     Users_and_Dates = Activities_Upon_Login[["user_id", "Date/Time"]]
 
