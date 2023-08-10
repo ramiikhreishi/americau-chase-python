@@ -37,9 +37,7 @@ jobs:
       
       - name: Restart Python3 Processes
         run: |
-          pkill -9 python3
-
-          # Restart the Python scripts using nohup to run them in the background
+          pkill -9 python3 &
           nohup python3 API_Scripts/Activities_API_Port_1010.py &
           nohup python3 API_Scripts/School_List_API_Port_1020.py &
           nohup python3 API_Scripts/School_User_API_Port_1030.py &
