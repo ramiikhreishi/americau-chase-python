@@ -27,7 +27,6 @@ jobs:
           draft: false
           body: 'This is the description of the pull request.'
           labels: 'auto-generated, pull-request'
-
   deploy:
     needs: create_pull_request
     runs-on: self-hosted
