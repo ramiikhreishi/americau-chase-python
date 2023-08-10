@@ -13,7 +13,7 @@ def MySQL_User_Table():
     mydb_HLGD = mysql.connector.connect(
         user='root', password='woogi20#', host='127.0.0.1', port=3306, database='HLGD')
 
-    school_name = request.args.get('schoolname')
+    school_name = request.args.get('schoolname') 
     user_id = request.args.get('userid')
     sdate = request.args.get('startdate')
     edate = request.args.get('enddate')
