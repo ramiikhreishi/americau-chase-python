@@ -54,4 +54,4 @@ jobs:
           nohup python3 TableCreationScripts/HL3_Complete_User_List.py &
           nohup python3 TableCreationScripts/HL3_Time_In_Game.py &
           nohup python3 TableCreationScripts/HL3_Mission_Table.py &
-          nohup python3 TableCreationScripts/HL3_Unique_User_Logins.py &
+          nohup python3 TableCreationScripts/HL3_Unique_User_Logins.py
