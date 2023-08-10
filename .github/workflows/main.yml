@@ -37,7 +37,7 @@ jobs:
       
       - name: Restart Python3 Processes
         run: |
-          sudo -S pkill -9 python3
+          pkill -9 python3
 
           # Restart the Python scripts using nohup to run them in the background
           nohup python3 API_Scripts/Activities_API_Port_1010.py &
